@@ -12,7 +12,7 @@ for (var i = 0; i < numberOfDrumButton; i++){
     // });
 
     document.querySelectorAll(".drum")[i].addEventListener("click", function () {
-        var buttonInnerHTML = this.innerHTML; // this gives us the html that was clicked 
+        var buttonInnerHTML = this.innerHTML; // this gives us the html with class = drum that was clicked 
         switch (buttonInnerHTML) {
             case "w":
                 var tom1 = new Audio("./sounds/tom-1.mp3");
