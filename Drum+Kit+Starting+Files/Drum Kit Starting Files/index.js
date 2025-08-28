@@ -1,19 +1,31 @@
 
 
+// Listening to Mouse click
+
 var numberOfDrumButton = document.querySelectorAll(".drum").length;
 for (var i = 0; i < numberOfDrumButton; i++){
+    document.querySelectorAll(".drum")[i].addEventListener("click", handleClick)
+} 
 
-    //     document.querySelectorAll("button")[i].addEventListener("click", function () {
-    //     alert("I got clicked")
-    // });
-    // document.querySelectorAll("button")[i].addEventListener("click", function () {
-    //     var audio = new Audio("./sounds/tom-1.mp3")
-    //     audio.play()
-    // });
+function handleClick(event) {
+    console.log(event)
+    var buttonInnerHTML = this.innerHTML; // this gives us the html with class = drum that was clicked. this points to the
+    //  DOM element that received the click.
+    makeSound(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML)
+}
 
-    document.querySelectorAll(".drum")[i].addEventListener("click", function () {
-        var buttonInnerHTML = this.innerHTML; // this gives us the html with class = drum that was clicked 
-        switch (buttonInnerHTML) {
+
+// Listening to Keys
+
+document.addEventListener("keypress", function (event) {
+    makeSound(event.key);
+    buttonAnimation(event.key)
+})
+
+// Making appropriate sound 
+function makeSound(key) {
+    switch (key) {
             case "w":
                 var tom1 = new Audio("./sounds/tom-1.mp3");
                 tom1.play();
@@ -52,9 +64,18 @@ for (var i = 0; i < numberOfDrumButton; i++){
         
             default:
                 break;
-        }
-    })
-    
+        };
+}
 
+function buttonAnimation(currentKey) {
+    var activeButton = document.querySelector("." + currentKey);
+
+    // console.log(activeButton.classList);
+
+    activeButton.classList.add("pressed");
+
+    setTimeout(function() {
+        activeButton.classList.remove("pressed")
+    }, 100);
 }
 
