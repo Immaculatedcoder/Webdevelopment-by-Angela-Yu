@@ -14,8 +14,10 @@ function Card(props) {
 
       <div className="bottom">
         <Detailed 
-        telephone = {props.tel}
-        emailing = {props.email}/>
+        details = {props.tel}/>
+
+        <Detailed 
+        details = {props.email}/>
       </div>
     </div>
   );
