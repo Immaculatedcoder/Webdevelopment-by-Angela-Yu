@@ -3,13 +3,26 @@ import Card from "./Card";
 import contacts from "../contacts";
 import Avatar from "./Avatar";
 
+function createCard(contact) {
+  return <Card
+    key = {contact.id}
+    id = {contact.id}
+    name = {contact.name}
+    imglink = {contact.imgURL}
+    tel = {contact.phone}
+    email = {contact.email}
+  />
+}
 
 function App() {
   return (
     <div>
       <h1 className="heading">My Contacts</h1>
-      <Avatar />
-      <Card
+      <Avatar img = "https://blackhistorywall.files.wordpress.com/2010/02/picture-device-independent-bitmap-119.jpg" />
+
+      {contacts.map(createCard)}
+
+      {/* <Card
         name = {contacts[0].name}
         imglink = {contacts[0].imgURL}
         tel = {contacts[0].phone}
@@ -28,7 +41,7 @@ function App() {
         imglink = {contacts[2].imgURL}
         tel = {contacts[2].phone}
         email = {contacts[2].email}
-      />
+      /> */}
     </div>
   );
 }

@@ -7,11 +7,13 @@ function Card(props) {
   return (
     <div className="card">
       <div className="top" >
+        <p>{props.id}</p>
         <h2 className="name"> {props.name}</h2>
+        
         {/* <img className="circle-img" src={props.imglink} alt="avatar_img"/> */}
         <Avatar img = {props.imglink}/>
       </div>
-
+        
       <div className="bottom">
         <Detailed 
         details = {props.tel}/>
