@@ -5,10 +5,12 @@ import Note from "./Note";
 import CreateArea from "./CreateArea";
 
 function App() {
+  // const []
+
   return (
     <div>
       <Header />
-      <CreateArea />
+      <CreateArea onSubit = {onAdd} />
       <Note key={1} title="Note title" content="Note content" />
       <Footer />
     </div>
@@ -16,3 +18,4 @@ function App() {
 }
 
 export default App;
+ 
