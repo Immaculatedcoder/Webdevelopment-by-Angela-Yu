@@ -52,11 +52,7 @@ function CreateArea(props) {
 
   return (
     <div>
-      <form className="create-note" onSubmit={(event) => {
-        event.preventDefault();
-        props.onSubmit(myform.title, myform.content);
-        setMyform({title: "", content: ""});
-        }}>
+      <form className="create-note" onSubmit={handleSubmit}>
         
         {isExpanded && (
           <input 
