@@ -42,6 +42,11 @@ function CreateArea(props) {
     setExpanded(true)
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    props.onSubmit(myform.title, myform.content);
+    setMyform({title: "", content: ""});
+  }
 
 
 
