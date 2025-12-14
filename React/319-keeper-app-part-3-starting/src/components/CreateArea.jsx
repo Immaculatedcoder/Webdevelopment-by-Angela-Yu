@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function CreateArea() {
+function CreateArea(props) {
   const [myform, setMyform] = useState({
     title : "",
     content : ""
@@ -10,20 +10,28 @@ function CreateArea() {
   function handleChange(event) {
     const {value, name} = event.target ;
 
-    setMyform(prev => {
-      if (name === "title") {
-        return {
-          title : value,
-          content : prev.content
-        }
-      } else if (name === "content") {
-        return {
-          title : prev.title,
-          content : value
-        }
-      }
-    });
+    setMyform(prev => ({
+    ...prev, 
+    [name] : value
+  }));
   }
+
+  //   setMyform(prev => {
+  //     if (name === "title") {
+  //       return {
+  //         title : value,
+  //         content : prev.content
+  //       }
+  //     } else if (name === "content") {
+  //       return {
+  //         title : prev.title,
+  //         content : value
+  //       }
+  //     }
+  //   });
+  // }
+
+  
 
 
 
@@ -31,9 +39,10 @@ function CreateArea() {
   return (
     <div>
       <form onSubmit={(event) => {
-        props.onSubmit(myform.title, myform.content);
-        setMyform({title: "", content: ""})
         event.preventDefault();
+        props.onSubmit(myform.title, myform.content);
+        setMyform({title: "", content: ""});
+        
       }}>
         <input onChange={handleChange} name="title" placeholder="Title" value={myform.title}/>
         <textarea onChange={handleChange} name="content" placeholder="Take a note..." rows="3"  value={myform.content}/>
