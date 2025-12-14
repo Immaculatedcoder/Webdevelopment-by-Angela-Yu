@@ -2,13 +2,15 @@ import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 function Note(props) {
+
+  function handleClick(event) {
+    props.onTap(props.id)
+  }
   return (
     <div className="note">
       <h1>{props.title}</h1>
       <p>{props.content}</p>
-      <button onClick={()=> {
-        props.onTap(props.id)
-      }}><DeleteIcon/> </button>
+      <button onClick={handleClick}><DeleteIcon/> </button>
     </div>
   );
 }
