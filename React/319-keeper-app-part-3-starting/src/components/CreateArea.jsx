@@ -6,6 +6,7 @@ import { Fab } from "@mui/material";
 import { Zoom } from "@mui/material";
 
 function CreateArea(props) {
+
   const [myform, setMyform] = useState({
     title : "",
     content : ""
@@ -35,7 +36,11 @@ function CreateArea(props) {
   //   });
   // }
 
-  
+  const [isExpanded, setExpanded] = useState(false);
+
+  function expand() {
+    setExpanded(true)
+  }
 
 
 
@@ -46,11 +51,27 @@ function CreateArea(props) {
         event.preventDefault();
         props.onSubmit(myform.title, myform.content);
         setMyform({title: "", content: ""});
+        }}>
         
-      }}>
-        <input onChange={handleChange} name="title" placeholder="Title" value={myform.title}/>
-        <textarea onChange={handleChange} name="content" placeholder="Take a note..." rows="3"  value={myform.content}/>
-        <Zoom in={true}> 
+        {isExpanded && (
+          <input 
+          onChange={handleChange} 
+          name="title" 
+          placeholder="Title" 
+          value={myform.title}
+        />
+        )}
+
+        <textarea 
+          onChange={handleChange}
+          name="content" 
+          placeholder="Take a note..." 
+          rows={isExpanded ? 3 : 1} 
+          value={myform.content}
+          onClick={expand}
+        />
+
+        <Zoom in={isExpanded}> 
           <Fab type="submit"> <AddIcon /> </Fab>
         </Zoom>
       </form>
