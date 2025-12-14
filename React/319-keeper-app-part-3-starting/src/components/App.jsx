@@ -19,10 +19,10 @@ function App() {
 
   function deleteTodo(id) {
     setTodos(prevTodos => {
-      prevTodos.filter((todo, index) => {
+      return prevTodos.filter((todo, index) => {
         return index !== id;
       });
-    })
+    });
   }
 
 
